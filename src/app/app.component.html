@@ -1,6 +1,6 @@
 <p-toast [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"/>
 
-<main class="h-[100vh] flex flex-col justify-center items-center flex-wrap">
+<main class="h-[100svh] flex flex-col justify-center items-center">
   <div class="flex flex-wrap gap-2 justify-center items-center">
     <p-button severity="secondary" size="large" class="mt-1" (onClick)="crearPartidaPopup = true">Nueva partida</p-button>
     @if (partida) {
@@ -55,11 +55,11 @@
         <span class="flex-grow text-xl w-full p-0 flex items-center justify-center" (click)="anotarDardoActual(0)">0</span>
       </button>
       <div class="w-full flex gap-2">
-        <button class="bg-green-500 text-white rounded flex flex-col items-center justify-center flex-grow min-w-[25%] cursor-pointer hover:bg-green-400 p-0">
-          <span class="flex-grow text-xl w-full p-0 flex items-center justify-center" (click)="anotarDardoActual(50)">DIANA DOBLE</span>
-        </button>
         <button class="bg-purple-500 text-white rounded flex flex-col items-center justify-center flex-grow min-w-[25%] cursor-pointer hover:bg-purple-400 p-0">
-          <span class="flex-grow text-xl w-full p-0 flex items-center justify-center" (click)="anotarDardoActual(25)">DIANA</span>
+          <span class="flex-grow text-xl w-full p-0 flex items-center justify-center pi pi-bullseye" (click)="anotarDardoActual(25)"></span>
+        </button>
+        <button class="bg-green-500 text-white rounded flex flex-col items-center justify-center flex-grow min-w-[25%] cursor-pointer hover:bg-green-400 p-0">
+          <span class="flex-grow text-xl w-full p-0 flex items-center justify-center pi pi-bullseye" (click)="anotarDardoActual(50)">&nbsp;x2</span>
         </button>
       </div>
     </section>
