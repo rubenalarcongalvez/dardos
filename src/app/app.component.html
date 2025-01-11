@@ -1,7 +1,7 @@
 <p-toast [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"/>
 
-<main class="h-[100svh] flex flex-col justify-center items-center">
-  <div class="flex flex-wrap gap-2 justify-center items-center">
+<main class="flex flex-col justify-center items-center" [ngClass]="{'h-[100dvh]': !partida}">
+  <div class="flex flex-wrap gap-2 justify-center items-center" [ngClass]="{'h-full': !partida}">
     <p-button severity="secondary" size="large" class="mt-1" (onClick)="crearPartidaPopup = true">Nueva partida</p-button>
     @if (partida) {
       <p-confirmPopup/>
@@ -9,8 +9,8 @@
     }
   </div>
   <br>
+  <section class="w-full flex flex-wrap p-1 gap-1 flex-grow">
   @if (partida && !partida.ganadores?.length) {
-    <section class="w-full flex flex-wrap p-1 gap-1 flex-grow">
       <article class="w-full flex flex-col gap-2 flex-wrap">
         <div class="flex gap-2 flex-wrap">
           @for (jugador of partida.jugadores; track jugador.apodo) {
@@ -47,7 +47,7 @@
       @for (numero of numeros; track numero) {
         <button class="bg-red-400 text-white rounded flex flex-col items-center justify-center flex-grow min-w-[25%] cursor-pointer hover:bg-red-300 p-0">
           <span class="border border-solid p-1 rounded bg-orange-400 hover:bg-orange-300 w-full" (click)="anotarDardoActual(numero*2)">x2</span>
-          <span class="flex-grow text-lg w-full p-0 flex items-center justify-center" (click)="anotarDardoActual(numero)">{{numero}}</span>
+          <span class="flex-grow text-lg w-full px-0 py-2 flex items-center justify-center" (click)="anotarDardoActual(numero)">{{numero}}</span>
           <span class="border border-solid p-1 rounded bg-blue-500 hover:bg-blue-400 w-full" (click)="anotarDardoActual(numero*3)">x3</span>
         </button>
       }
@@ -56,15 +56,14 @@
       </button>
       <div class="w-full flex gap-2">
         <button class="bg-purple-500 text-white rounded flex flex-col items-center justify-center flex-grow min-w-[25%] cursor-pointer hover:bg-purple-400 p-0">
-          <span class="flex-grow text-xl w-full p-0 flex items-center justify-center pi pi-bullseye" (click)="anotarDardoActual(25)"></span>
+          <span class="flex-grow text-xl w-full px-0 py-2 flex items-center justify-center pi pi-bullseye" (click)="anotarDardoActual(25)"></span>
         </button>
         <button class="bg-green-500 text-white rounded flex flex-col items-center justify-center flex-grow min-w-[25%] cursor-pointer hover:bg-green-400 p-0">
-          <span class="flex-grow text-xl w-full p-0 flex items-center justify-center pi pi-bullseye" (click)="anotarDardoActual(50)">&nbsp;x2</span>
+          <span class="flex-grow text-xl w-full px-0 py-2 flex items-center justify-center pi pi-bullseye" (click)="anotarDardoActual(50)">&nbsp;x2</span>
         </button>
       </div>
-    </section>
   } @else if (partida && partida.ganadores?.length) {
-    <div class="h-[90%] flex flex-col justify-start items-start m-2">
+    <div class="flex flex-col justify-start items-start m-2">
       <div class="flex gap-2 flex-wrap mb-2">
         @for (jugador of partida.jugadores; track jugador.apodo) {
           <div class="flex flex-col justify-center items-center">
@@ -84,6 +83,7 @@
       </section>
     </div>
   }
+  </section>
 </main>
 
 <!-- Popup crear partida -->

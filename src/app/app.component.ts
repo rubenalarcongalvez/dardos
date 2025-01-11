@@ -14,10 +14,11 @@ import { InputIconModule } from 'primeng/inputicon';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { CheckboxModule } from 'primeng/checkbox';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonModule, DialogModule, SelectButtonModule, FormsModule, InputTextModule, FloatLabelModule, ToastModule, ChipModule, IconFieldModule, InputIconModule, AutoFocusModule, ConfirmPopupModule, CheckboxModule],
+  imports: [ButtonModule, DialogModule, SelectButtonModule, FormsModule, InputTextModule, FloatLabelModule, ToastModule, ChipModule, IconFieldModule, InputIconModule, AutoFocusModule, ConfirmPopupModule, CheckboxModule, CommonModule],
   providers: [MessageService, ConfirmationService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -156,8 +157,10 @@ export class AppComponent {
               .map(puntuacion => puntuacion || 0)
               .reduce((a, b) => a + b, 0);
           
-            // Restamos la puntuación acumulada y aseguramos que no sea negativa
-            jugadorActual.puntuacion = Math.max(jugadorActual.puntuacion - totalPuntuacion, 0);
+            // Restamos la puntuación acumulada y aseguramos que no sea negativa, si no, se queda con la ultima que tenia
+            if (jugadorActual.puntuacion - totalPuntuacion >= 0) {
+              jugadorActual.puntuacion -= totalPuntuacion;
+            }
           
             // Determinamos ganadores según las reglas de última oportunidad
             if (this.partida) {
