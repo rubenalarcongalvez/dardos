@@ -92,6 +92,7 @@ export class AppComponent {
     } else if (this.listaJugadores.includes(this.jugadorAAnadir)) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No puede repetirse el jugador', life: 3000 });
     }
+    this.focoInput();
   }
 
   eliminarJugador(jugador: string) {
