@@ -9,7 +9,7 @@
     }
   </div>
   <br>
-  <section class="w-full flex flex-wrap p-1 gap-1 flex-grow">
+  <section class="w-full flex flex-wrap p-1 gap-1 flex-grow justify-center">
   @if (partida && !partida.ganadores?.length) {
       <article class="w-full flex flex-col gap-2 flex-wrap">
         <div class="flex gap-2 flex-wrap">
@@ -109,8 +109,8 @@
       <p-floatlabel variant="on">
         <p-iconfield>
           <input pInputText id="on_label_jugador" [(ngModel)]="jugadorAAnadir" autocomplete="off" (keydown.enter)="anadirJugadorALista()"/>
-          <label for="on_label_jugador">Añadir jugador</label>
-          <p-inputicon class="pi pi-plus cursor-pointer !text-blue-500" (click)="anadirJugadorALista()"></p-inputicon>
+          <label for="on_label_jugador">Nombre de jugador</label>
+          <p-inputicon class="pi pi-plus cursor-pointer !text-blue-500" (click)="anadirJugadorALista()">Añadir</p-inputicon>
         </p-iconfield>
       </p-floatlabel>
     </article>

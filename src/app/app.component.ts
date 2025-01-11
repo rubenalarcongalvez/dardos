@@ -170,6 +170,7 @@ export class AppComponent {
                   this.ganadoresProvisionales.push(jugadorActual);
                 } else {
                   this.partida.ganadores = [jugadorActual];
+                  this.guardarDatos();
                   return;
                 }
               }
